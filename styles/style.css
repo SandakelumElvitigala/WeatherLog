@@ -1,0 +1,110 @@
+.toprow{
+    margin-top: 10px;
+}
+
+.topic{
+    color: white;
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    margin-left: 10px;
+}
+
+.togglebtncol{
+    display: flex;
+    justify-content: right;
+}
+
+/* Remove default background and border */
+.btn-check {
+    display: none; /* Hide the checkbox itself */
+}
+
+#toggleStat {
+    background-color: transparent; /* Make the background transparent */
+    border: 1px solid transparent; /* Make the border transparent */
+    padding: 10px 20px; /* Add padding to size the button */
+    border-radius: 5px; /* Optional: rounded corners */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+}
+
+#toggleStat i {
+    color: #333; /* Default icon color */
+    font-size: 20px; /* Adjust icon size */
+}
+
+/* Change styles when the checkbox is checked */
+.btn-check:checked + #toggleStat {
+    border-color: rgba(255, 255, 255, 0.5); /* Light border when checked */
+}
+
+/* Optional: Add hover effect */
+#toggleStat:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Light background on hover */
+}
+
+#toggleStat i {
+    font-size: 40px; /* Change the size of the icon */
+    color: #333; /* Optional: change the color of the icon */
+}
+
+.mainrow{
+    height: 80vh; 
+    width: 100%;
+}
+
+.maincol{
+    height: 85%;
+    margin-top: 2%;
+    margin-left: 3%;
+    background-color: #ffffff5c;
+    border-radius: 5%;
+}
+
+.maincol table{
+    width: 95%;
+}
+
+.searchlocation{
+    min-height: 30%;
+    background: #fbfafa8e;
+    margin-top: 3%;
+    margin-left: 2%;
+    margin-right: 1%;
+    border-radius: 10px;
+}
+
+.carouselrow{
+    height: 60%;
+    margin-top: 1%;
+    background: #a7a4a4;
+    margin-left: 2%;
+    margin-right: 1%;
+}
+
+#local-time{
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.searchtab{
+    background-color: #ffffff00;
+    border-radius: 10px;
+    height: 90%;
+    margin: 1%;
+}
+
+.bottomrow{
+    margin: 20px;
+    background-color: rgba(255, 255, 255, 0.259);
+    height: auto;
+    border-radius: 15px;
+}
+
+.icon {
+    font-size: 48px;
+}
+
+.detailcol{
+    background: #beb7b700;
+}
