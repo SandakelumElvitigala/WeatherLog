@@ -26,13 +26,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to display weather data
     function displayWeather(data, isSearch) {
-        const locationElement = isSearch ? document.getElementById('searched-location') : document.getElementById('location');
-        const temperatureElement = isSearch ? document.getElementById('searched-temperature') : document.getElementById('temperature');
-        const conditionElement = isSearch ? document.getElementById('searched-condition') : document.getElementById('condition');
-        const humidityElement = isSearch ? document.getElementById('searched-humidity') : document.getElementById('humidity');
-        const windElement = isSearch ? document.getElementById('searched-wind') : document.getElementById('wind');
-        const iconElement = isSearch ? document.getElementById('searched-icon') : document.getElementById('icon');
-        const timeElement = isSearch ? document.getElementById('searched-time') : document.getElementById('local-time'); // New time element
+        const locationElement = isSearch ? document.getElementById('searched-location-tab') : document.getElementById('location');
+        const temperatureElement = isSearch ? document.getElementById('searched-temperature-tab') : document.getElementById('temperature');
+        const conditionElement = isSearch ? document.getElementById('searched-condition-tab') : document.getElementById('condition');
+        const humidityElement = isSearch ? document.getElementById('searched-humidity-tab') : document.getElementById('humidity');
+        const windElement = isSearch ? document.getElementById('searched-wind-tab') : document.getElementById('wind');
+        const iconElement = isSearch ? document.getElementById('searched-icon-tab') : document.getElementById('icon');
+        const timeElement = isSearch ? document.getElementById('searched-time-tab') : document.getElementById('local-time'); // New time element
+
 
         if (!locationElement || !temperatureElement || !conditionElement || !humidityElement || !windElement || !iconElement || !timeElement) {
             console.error('One or more elements are missing in the HTML.');
@@ -74,8 +75,8 @@ document.addEventListener('DOMContentLoaded', function () {
         fetchWeather('London');  // Fallback to default location
     }
 
-    document.getElementById('searchButton').addEventListener('click', function () {
-        const searchQuery = document.getElementById('searchInput').value.trim();
+    document.getElementById('searchButtonTab').addEventListener('click', function () {
+        const searchQuery = document.getElementById('searchInputTab').value.trim();
         console.log('Search button clicked with query:', searchQuery);  // Log the search query
         if (searchQuery) {
             fetchWeather(searchQuery, true);

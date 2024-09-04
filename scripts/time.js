@@ -1,5 +1,5 @@
 document.body.style.backgroundImage = "url('assests/themes/lighttheme-noon.jpg')";
-document.body.style.backgroundSize = "cover";
+document.body.style.backgroundSize = "fix";
 document.body.style.backgroundRepeat = "no-repeat";
 document.body.style.backgroundPosition = "center";
 
@@ -57,9 +57,20 @@ function updateTime() {
     const amPm = localTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }).split(' ')[1];
 
     // Display time, date, and period (AM/PM)
+    const timelap = document.getElementById('local-time');
+    const ampmlap = document.getElementById('am-pm');
+    const timetab = document.getElementById('local-time-tablet');
+    const ampmtab = document.getElementById('am-pm-tablet');
+    const datelap = document.getElementById('local-date');
+    const datetab = document.getElementById('local-date-tablet');
+
     document.getElementById('local-time').textContent = `${timeString1}`;
-    document.getElementById('local-date').textContent = `${dateString}`;
-    document.getElementById('am-pm').textContent = `${amPm}`;
+    datelap.textContent = `${dateString}`;
+    ampmlap.textContent = `${amPm}`;
+
+    timetab.textContent = `${timeString1}`;
+    datetab.textContent = `${dateString}`;
+    ampmtab.textContent = `${amPm}`;
     // Determine the time of day
     hours = localTime.getHours();
     console.log(hours);

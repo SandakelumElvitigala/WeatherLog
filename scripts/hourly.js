@@ -31,12 +31,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
         hoursToDisplay.forEach(hour => {
             const weatherData = hourlyData.find(h => new Date(h.time).getHours() === hour);
-            const hourElement = document.getElementById(`hour-${hour}`); // Assuming you have elements with IDs like hour-4, hour-6, etc.
+            const hourElementlap = document.getElementById(`hour-${hour}`); // Assuming you have elements with IDs like hour-4, hour-6, etc.
+            const hourElementtab = document.getElementById(`hour-${hour}-tab`);
 
-            if (hourElement) {
+            if (hourElementlap && hourElementtab) {
                 if (hour <= currentHour) {
                     // Display actual weather data for the current or past hours
-                    hourElement.innerHTML = `
+                    hourElementlap.innerHTML = `
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="popover" data-bs-placement="right"
+                            data-bs-custom-class="custom-popover"
+                            data-bs-title="Weather Information"
+                            data-bs-content="Temp: ${weatherData.temp_c}&#8451;  Condition: ${weatherData.condition.text}">
+                            <center><img src="https:${weatherData.condition.icon}" alt="Weather icon"></center>
+                        </button>
+                    `;
+                    hourElementtab.innerHTML = `
                         <button type="button" class="btn btn-secondary" data-bs-toggle="popover" data-bs-placement="right"
                             data-bs-custom-class="custom-popover"
                             data-bs-title="Weather Information"
@@ -46,7 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     `;
                 } else {
                     // Display "N/A" for future hours
-                    hourElement.innerHTML = `
+                    hourElementlap.innerHTML = `
+                        <p><center>N/A</center></p>
+                    `;
+                    hourElementtab.innerHTML = `
                         <p><center>N/A</center></p>
                     `;
                 }

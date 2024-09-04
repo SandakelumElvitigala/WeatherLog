@@ -17,28 +17,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to display weather data
     function displayWeather(data) {
-        const locationElement = document.getElementById('location');
-        const temperatureElement = document.getElementById('temperature');
-        const conditionElement = document.getElementById('condition');
-        const humidityElement = document.getElementById('humidity');
-        const windElement = document.getElementById('wind');
-        const iconElement = document.getElementById('icon');
-
-        // Set location
-        locationElement.textContent = `${data.location.name}, ${data.location.country}`;
-
-        // Set temperature and condition
-        temperatureElement.innerHTML = `${data.current.temp_c}&#8451;`;
-        conditionElement.textContent = `Condition: ${data.current.condition.text}`;
-
-        // Set humidity and wind
-        humidityElement.textContent = `Humidity: ${data.current.humidity}%`;
-        windElement.textContent = `Wind: ${data.current.wind_kph} kph`;
-
-        // Display weather icon
-        const iconUrl = `https:${data.current.condition.icon}`;
-        iconElement.innerHTML = `<img src="${iconUrl}" alt="Weather icon">`;
+        const locationElementLaptop = document.getElementById('location');
+        const temperatureElementLaptop = document.getElementById('temperature1');
+        const conditionElementLaptop = document.getElementById('condition');
+        const humidityElementLaptop = document.getElementById('humidity1');
+        const windElementLaptop = document.getElementById('wind1');
+        const iconElementLaptop = document.getElementById('icon');
+    
+        const locationElementTablet = document.getElementById('location-tablet');
+        const temperatureElementTablet = document.getElementById('temperature1-tablet');
+        const conditionElementTablet = document.getElementById('condition-tablet');
+        const humidityElementTablet = document.getElementById('humidity1-tablet');
+        const windElementTablet = document.getElementById('wind1-tablet');
+        const iconElementTablet = document.getElementById('icon-tablet');
+    
+        // Set data for Laptop
+        locationElementLaptop.textContent = `${data.location.name}, ${data.location.country}`;
+        temperatureElementLaptop.innerHTML = `${data.current.temp_c}&#8451;`;
+        conditionElementLaptop.textContent = `${data.current.condition.text}`;
+        humidityElementLaptop.textContent = `${data.current.humidity}%`;
+        windElementLaptop.textContent = `${data.current.wind_kph} kph`;
+        iconElementLaptop.innerHTML = `<img src="https:${data.current.condition.icon}" alt="Weather icon">`;
+    
+        // Set data for Tablet
+        locationElementTablet.textContent = `${data.location.name}, ${data.location.country}`;
+        temperatureElementTablet.innerHTML = `${data.current.temp_c}&#8451;`;
+        conditionElementTablet.textContent = `${data.current.condition.text}`;
+        humidityElementTablet.textContent = `${data.current.humidity}%`;
+        windElementTablet.textContent = `${data.current.wind_kph} kph`;
+        iconElementTablet.innerHTML = `<img src="https:${data.current.condition.icon}" alt="Weather icon">`;
     }
+    
 
     // Get user's location
     if (navigator.geolocation) {
