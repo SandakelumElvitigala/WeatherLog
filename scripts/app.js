@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const apiKey = 'a237e03ebf0848609fb120515240209'; // Your API key
-    const baseUrl = 'http://api.weatherapi.com/v1/current.json';
+    const baseUrl = 'https://api.weatherapi.com/v1/current.json'; // Use HTTPS
 
     // Function to fetch and display weather data based on location
     function fetchWeather(latitude, longitude) {
@@ -62,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
         windElementMobile.textContent = `${data.current.wind_kph} kph`;
         iconElementMobile.innerHTML = `<img src="https:${data.current.condition.icon}" alt="Weather icon">`;
     }
-    
 
     // Get user's location
     if (navigator.geolocation) {
