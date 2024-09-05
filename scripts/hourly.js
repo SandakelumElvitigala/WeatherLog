@@ -63,15 +63,30 @@ document.addEventListener('DOMContentLoaded', function() {
                         </button>
                     `;
                 } else {
-                    // Display "N/A" for future hours
+                    // Display "wait.mp4" video instead of "N/A" for future hours
                     hourElementlap.innerHTML = `
-                        <p><center>N/A</center></p>
+                        <center>
+                            <video autoplay loop muted playsinline style="height:90px; width:60px;">
+                                <source src="assests/waiting.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </center>
                     `;
                     hourElementtab.innerHTML = `
-                        <p><center>N/A</center></p>
+                        <center>
+                            <video autoplay loop muted playsinline style="height:90px; width:60px;">
+                                <source src="assests/waiting.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </center>
                     `;
                     hourElementmob.innerHTML = `
-                        <p><center>N/A</center></p>
+                        <center>
+                            <video autoplay loop muted playsinline style="height:90px; width:60px;">
+                                <source src="assests/waiting.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </center>
                     `;
                 }
             }
@@ -103,4 +118,3 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchWeather('London'); // Fallback to default location
     }
 });
- 
