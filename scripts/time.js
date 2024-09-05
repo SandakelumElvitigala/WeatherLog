@@ -1,10 +1,17 @@
 document.body.style.backgroundImage = "url('assests/themes/lighttheme-noon.jpg')";
-document.body.style.backgroundSize = "fix";
+document.body.style.backgroundSize = "cover";
 document.body.style.backgroundRepeat = "no-repeat";
 document.body.style.backgroundPosition = "center";
+document.body.style.backgroundAttachment = "fixed";
 
 let localTimeOffset = 0; // Initialize the global offset variable
 let hours = 0;
+
+// Function to display the local time immediately using the browser's local time
+function displayInitialTime() {
+    updateTime(); // Call update time immediately using the system time
+    setInterval(updateTime, 1000); // Update time every second based on the system time
+}
 
 function displayLocalTime() {
     if (navigator.geolocation) {
@@ -20,13 +27,6 @@ function displayLocalTime() {
                     const serverTime = new Date(data.datetime);
                     const localTime = new Date();
                     localTimeOffset = serverTime.getTime() - localTime.getTime();
-
-                    // Update the time and background every second
-                    setInterval(() => {
-                        updateTime();
-                        let stat = getStat();
-                        changeBackground(stat);
-                    }, 1000);
 
                     // Fetch location details based on lat and lon
                     fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
@@ -49,10 +49,10 @@ function displayLocalTime() {
 }
 
 function updateTime() {
-    // Calculate the current time based on the local time offset
+    // Calculate the current time using the local system time, and adjust if we have fetched the correct time offset
     const localTime = new Date(new Date().getTime() + localTimeOffset);
-    const timeString1 = localTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit',  hour12: false });
-    const timeString = localTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit',  hour12: true });
+    const timeString1 = localTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+    const timeString = localTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
     const dateString = localTime.toLocaleDateString();
     const amPm = localTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }).split(' ')[1];
 
@@ -63,6 +63,9 @@ function updateTime() {
     const ampmtab = document.getElementById('am-pm-tablet');
     const datelap = document.getElementById('local-date');
     const datetab = document.getElementById('local-date-tablet');
+    const timeMob = document.getElementById('local-time-mobile');
+    const ampmMob = document.getElementById('am-pm-mobile');
+    const dateMob = document.getElementById('local-date-mobile');
 
     document.getElementById('local-time').textContent = `${timeString1}`;
     datelap.textContent = `${dateString}`;
@@ -71,6 +74,11 @@ function updateTime() {
     timetab.textContent = `${timeString1}`;
     datetab.textContent = `${dateString}`;
     ampmtab.textContent = `${amPm}`;
+
+    timeMob.textContent = `${timeString1}`;
+    dateMob.textContent = `${dateString}`;
+    ampmMob.textContent = `${amPm}`;
+
     // Determine the time of day
     hours = localTime.getHours();
     console.log(hours);
@@ -110,8 +118,14 @@ function getStat() {
 // Add event listener to the checkbox to handle change event
 toggleCheckbox.addEventListener('change', updateLabel);
 
-// Initial call to set the correct label text on page load
-updateLabel();
+// Automatically click the checkbox twice when the page loads
+window.onload = function() {
+    toggleCheckbox.click(); // First click
+    toggleCheckbox.click(); // Second click
+    updateLabel(); // Update label after clicks
+    displayInitialTime(); // Display time immediately after page load
+    displayLocalTime(); // Fetch and update location and time zone info
+};
 
 function changeBackground(stat) {
     console.log(stat);
@@ -142,4 +156,4 @@ function changeBackground(stat) {
     document.body.style.backgroundPosition = "center";
 }
 
-displayLocalTime();
+displayInitialTime(); // Display the initial time immediately

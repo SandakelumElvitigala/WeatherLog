@@ -30,6 +30,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const humidityElementTablet = document.getElementById('humidity1-tablet');
         const windElementTablet = document.getElementById('wind1-tablet');
         const iconElementTablet = document.getElementById('icon-tablet');
+
+        const locationElementMobile = document.getElementById('location-mobile');
+        const temperatureElementMobile = document.getElementById('temperature1-mobile');
+        const conditionElementMobile = document.getElementById('condition-mobile');
+        const humidityElementMobile = document.getElementById('humidity1-mobile');
+        const windElementMobile = document.getElementById('wind1-mobile');
+        const iconElementMobile = document.getElementById('icon-mobile');
     
         // Set data for Laptop
         locationElementLaptop.textContent = `${data.location.name}, ${data.location.country}`;
@@ -46,6 +53,14 @@ document.addEventListener('DOMContentLoaded', function() {
         humidityElementTablet.textContent = `${data.current.humidity}%`;
         windElementTablet.textContent = `${data.current.wind_kph} kph`;
         iconElementTablet.innerHTML = `<img src="https:${data.current.condition.icon}" alt="Weather icon">`;
+
+        // Set data for Mobile
+        locationElementMobile.textContent = `${data.location.name}, ${data.location.country}`;
+        temperatureElementMobile.innerHTML = `${data.current.temp_c}&#8451;`;
+        conditionElementMobile.textContent = `${data.current.condition.text}`;
+        humidityElementMobile.textContent = `${data.current.humidity}%`;
+        windElementMobile.textContent = `${data.current.wind_kph} kph`;
+        iconElementMobile.innerHTML = `<img src="https:${data.current.condition.icon}" alt="Weather icon">`;
     }
     
 

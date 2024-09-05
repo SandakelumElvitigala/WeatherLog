@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const weatherData = hourlyData.find(h => new Date(h.time).getHours() === hour);
             const hourElementlap = document.getElementById(`hour-${hour}`); // Assuming you have elements with IDs like hour-4, hour-6, etc.
             const hourElementtab = document.getElementById(`hour-${hour}-tab`);
+            const hourElementmob = document.getElementById(`hour-${hour}-mob`);
 
             if (hourElementlap && hourElementtab) {
                 if (hour <= currentHour) {
@@ -53,12 +54,23 @@ document.addEventListener('DOMContentLoaded', function() {
                             <center><img src="https:${weatherData.condition.icon}" alt="Weather icon"></center>
                         </button>
                     `;
+                    hourElementmob.innerHTML = `
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="popover" data-bs-placement="right"
+                            data-bs-custom-class="custom-popover"
+                            data-bs-title="Weather Information"
+                            data-bs-content="Temp: ${weatherData.temp_c}&#8451;  Condition: ${weatherData.condition.text}">
+                            <center><img src="https:${weatherData.condition.icon}" alt="Weather icon"></center>
+                        </button>
+                    `;
                 } else {
                     // Display "N/A" for future hours
                     hourElementlap.innerHTML = `
                         <p><center>N/A</center></p>
                     `;
                     hourElementtab.innerHTML = `
+                        <p><center>N/A</center></p>
+                    `;
+                    hourElementmob.innerHTML = `
                         <p><center>N/A</center></p>
                     `;
                 }

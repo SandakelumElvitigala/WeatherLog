@@ -28,30 +28,39 @@ document.addEventListener('DOMContentLoaded', function () {
         forecastData.slice(1, 6).forEach((dayData, index) => { // Skip today and get the next 5 days
             const dayElement = document.getElementById(`d-${index + 1}`); // Select elements with IDs like d-1, d-2, etc.
             const dayElement1 = document.getElementById(`d-${index + 1}-tab`);
+            const dayElement2 = document.getElementById(`d-${index + 1}-mob`);
 
             if (dayElement) {
                 dayElement.innerHTML = `
-                <div class="row">
-                    <div class="col">
-                        <table>
+                <div class="row" style="height:100%;">
+                    <div class="col" style="display:flex; align-items:center; justify-content:center;">
+                        <table style="width:60%;">
                             <tr>
-                                <td><center><i class="fa-solid fa-temperature-low" style="color: #ffffff;"></i></center></td>
-                                <td><div id="temp">${dayData.day.avgtemp_c}&#8451;</div></td>
+                                <td><center>&nbsp;<i class="fa-solid fa-temperature-low" style="color: #ffffff;"></i></center></td>
+                                <td><div id="temp">&nbsp;&nbsp;${dayData.day.avgtemp_c}&#8451;</div><br></td>
                             </tr>
                             <tr>
-                                <td><center><i class="fa-solid fa-wind" style="color: #ffffff;"></i></center></td>
-                                <td><div id="wind">${dayData.day.maxwind_kph} kph</div></td>
+                                <td><center>&nbsp;<i class="fa-solid fa-wind" style="color: #ffffff;"></i></center></td>
+                                <td><div id="wind">&nbsp;&nbsp;${dayData.day.maxwind_kph} kph</div><br></td>
                             </tr>
                             <tr>
-                                <td><center><i class="fa-solid fa-droplet" style="color: #ffffff;"></i></center></td>
-                                <td><div id="humidity">${dayData.day.avghumidity}%</div></td>
+                                <td><center>&nbsp;<i class="fa-solid fa-droplet" style="color: #ffffff;"></i></center></td>
+                                <td><div id="humidity">&nbsp;&nbsp;${dayData.day.avghumidity}%</div></td>
                             </tr>
                         </table>
                     </div>
-                    <div class="col">
-                        <p><strong>Date:</strong> ${dayData.date}</p>
-                        <p><strong>Condition:</strong> ${dayData.day.condition.text}</p>
-                        <img src="https:${dayData.day.condition.icon}" alt="Weather icon">
+                    <div class="col" style="display:flex; align-items:center; justify-content:left;">
+                        <table>
+                            <tr>
+                                <td><p><strong>${dayData.date}</p></td>
+                            </tr>
+                            <tr>
+                                <td><img src="https:${dayData.day.condition.icon}" alt="Weather icon"></td>
+                            </tr>
+                            <tr>
+                                <td><p><br>${dayData.day.condition.text}</p></td>
+                            </tr>
+                        </table>                                              
                     </div>
                 </div>
             `;
@@ -59,27 +68,71 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (dayElement1) {
                 dayElement1.innerHTML = `
-                <div class="row">
-                    <div class="col">
-                        <table>
+                <div class="row" style="height:100%;">
+                    <div class="col" style="display:flex; align-items:center; justify-content:center;">
+                        <table style="width:60%;">
                             <tr>
-                                <td><center><i class="fa-solid fa-temperature-low" style="color: #ffffff;"></i></center></td>
-                                <td><div id="temp">${dayData.day.avgtemp_c}&#8451;</div></td>
+                                <td><center>&nbsp;<i class="fa-solid fa-temperature-low" style="color: #ffffff;"></i></center></td>
+                                <td><div id="temp">&nbsp;&nbsp;${dayData.day.avgtemp_c}&#8451;</div><br></td>
                             </tr>
                             <tr>
-                                <td><center><i class="fa-solid fa-wind" style="color: #ffffff;"></i></center></td>
-                                <td><div id="wind">${dayData.day.maxwind_kph} kph</div></td>
+                                <td><center>&nbsp;<i class="fa-solid fa-wind" style="color: #ffffff;"></i></center></td>
+                                <td><div id="wind">&nbsp;&nbsp;${dayData.day.maxwind_kph} kph</div><br></td>
                             </tr>
                             <tr>
-                                <td><center><i class="fa-solid fa-droplet" style="color: #ffffff;"></i></center></td>
-                                <td><div id="humidity">${dayData.day.avghumidity}%</div></td>
+                                <td><center>&nbsp;<i class="fa-solid fa-droplet" style="color: #ffffff;"></i></center></td>
+                                <td><div id="humidity">&nbsp;&nbsp;${dayData.day.avghumidity}%</div></td>
                             </tr>
                         </table>
                     </div>
-                    <div class="col">
-                        <p><strong>Date:</strong> ${dayData.date}</p>
-                        <p><strong>Condition:</strong> ${dayData.day.condition.text}</p>
-                        <img src="https:${dayData.day.condition.icon}" alt="Weather icon">
+                    <div class="col" style="display:flex; align-items:center; justify-content:left;">
+                        <table>
+                            <tr>
+                                <td><p>${dayData.date}</p></td>
+                            </tr>
+                            <tr>
+                                <td><img src="https:${dayData.day.condition.icon}" alt="Weather icon"></td>
+                            </tr>
+                            <tr>
+                                <td><p><br>${dayData.day.condition.text}</p></td>
+                            </tr>
+                        </table>                                              
+                    </div>
+                </div>
+            `;
+            }
+
+            if (dayElement2) {
+                dayElement2.innerHTML = `
+                <div class="row" style="height:100%;">
+                    <div class="col" style="display:flex; align-items:center; justify-content:center;">
+                        <table style="width:60%;">
+                            <tr>
+                                <td><center>&nbsp;<i class="fa-solid fa-temperature-low" style="color: #ffffff;"></i></center></td>
+                                <td><div id="temp">&nbsp;&nbsp;${dayData.day.avgtemp_c}&#8451;</div><br></td>
+                            </tr>
+                            <tr>
+                                <td><center>&nbsp;<i class="fa-solid fa-wind" style="color: #ffffff;"></i></center></td>
+                                <td><div id="wind">&nbsp;&nbsp;${dayData.day.maxwind_kph} kph</div><br></td>
+                            </tr>
+                            <tr>
+                                <td><center>&nbsp;<i class="fa-solid fa-droplet" style="color: #ffffff;"></i></center></td>
+                                <td><div id="humidity">&nbsp;&nbsp;${dayData.day.avghumidity}%</div></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col" style="display:flex; align-items:center; justify-content:left;">
+                        <table>
+                            <tr>
+                                <td><p>${dayData.date}</p></td>
+                            </tr>
+                            <tr>
+                                <td><img src="https:${dayData.day.condition.icon}" alt="Weather icon"></td>
+                            </tr>
+                            <tr>
+                                <td><p><br>${dayData.day.condition.text}</p></td>
+                            </tr>
+                        </table>                                              
                     </div>
                 </div>
             `;

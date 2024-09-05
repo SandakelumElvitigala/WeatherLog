@@ -29,35 +29,44 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Function to display weather data
-    function displayWeatherData(data, elementId, elementTabId) {
+    function displayWeatherData(data, elementId, elementTabId, elementMobId) {
         const weatherElement = document.getElementById(elementId);
         const weatherElementTab = document.getElementById(elementTabId);
+        const weatherElementMob = document.getElementById(elementMobId);
 
-        if (weatherElement && weatherElementTab) {
+        if (weatherElement && weatherElementTab && weatherElementMob) {
             const dayData = data.forecast.forecastday[0].day;
 
             const weatherHTML = `
-                <div class="row">
-                    <div class="col">
+                <div class="row" style="height:100%;">
+                    <div class="col" style="display:flex; align-items:center; justify-content:center;">
                         <table>
                             <tr>
-                                <td><center><i class="fa-solid fa-temperature-low" style="color: #ffffff;"></i></center></td>
-                                <td><div id="temp">${dayData.avgtemp_c}&#8451;</div></td>
+                                <td><center>&nbsp;<i class="fa-solid fa-temperature-low" style="color: #ffffff;"></i></center></td>
+                                <td><div id="temp">&nbsp;&nbsp;${dayData.avgtemp_c}&#8451;</div><br></td>
                             </tr>
                             <tr>
-                                <td><center><i class="fa-solid fa-wind" style="color: #ffffff;"></i></center></td>
-                                <td><div id="wind">${dayData.maxwind_kph} kph</div></td>
+                                <td><center>&nbsp;<i class="fa-solid fa-wind" style="color: #ffffff;"></i></center></td>
+                                <td><div id="wind">&nbsp;&nbsp;${dayData.maxwind_kph} kph</div><br></td>
                             </tr>
                             <tr>
-                                <td><center><i class="fa-solid fa-droplet" style="color: #ffffff;"></i></center></td>
-                                <td><div id="humidity">${dayData.avghumidity}%</div></td>
+                                <td><center>&nbsp;<i class="fa-solid fa-droplet" style="color: #ffffff;"></i></center></td>
+                                <td><div id="humidity">&nbsp;&nbsp;${dayData.avghumidity}%</div><br></td>
                             </tr>
                         </table>
                     </div>
-                    <div class="col">
-                        <p><strong>Date:</strong> ${data.forecast.forecastday[0].date}</p>
-                        <p><strong>Condition:</strong> ${dayData.condition.text}</p>
-                        <img src="https:${dayData.condition.icon}" alt="Weather icon">
+                    <div class="col" style="display:flex; align-items:center; justify-content:center;">
+                        <table>
+                            <tr>
+                                <td><p>${data.forecast.forecastday[0].date}</p></td>
+                            <tr>
+                            <tr>
+                                <td><img src="https:${dayData.condition.icon}" alt="Weather icon"></td>
+                            <tr>
+                            <tr>
+                                <td><p>${dayData.condition.text}</p></td>
+                            <tr>
+                        </table>
                     </div>
                 </div>
             `;
@@ -65,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Update the content of both elements
             weatherElement.innerHTML = weatherHTML;
             weatherElementTab.innerHTML = weatherHTML;
+            weatherElementMob.innerHTML = weatherHTML;
         }
     }
 
@@ -84,7 +94,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(data => {
                     const elementId = `day-${index + 1}`;
                     const elementTabId = `${elementId}-tab`;
-                    displayWeatherData(data, elementId, elementTabId);
+                    const elementMobId = `day-${index+1}-mob`
+                    displayWeatherData(data, elementId, elementTabId, elementMobId);
                 })
                 .catch(error => {
                     console.error('Error fetching weather data:', error);

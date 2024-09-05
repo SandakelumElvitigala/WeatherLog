@@ -1,7 +1,7 @@
 body{
     overflow-x: hidden;
-    overflow-y: hidden;
     background-size: cover;
+    overflow-x: hidden;
 }
 
 .toprow{
@@ -60,14 +60,14 @@ body{
 }
 
 .maincol{
-    height: 70%;
+    height: 80%;
     margin-top: 2%;
     margin-left: 3%;
     background-color: #ffffff5c;
     border-radius: 5%;
 }
 
-.maincol table, .maincol-tab table{
+.maincol table, .maincol-tab table, .maincol-mobile table{
     width: 95%;
 }
 
@@ -98,7 +98,7 @@ body{
     margin-right: 1%;
 }
 
-#local-time, #local-time-tablet{
+#local-time, #local-time-tablet, #local-time-mobile{
     font-size: 50px;
     font-weight: 600;
 }
@@ -153,8 +153,25 @@ body{
     border-radius: 5%;
 }
 
+.maincol-mobile{
+    margin-top: 50px;
+    height: 80%;
+    margin-left: 3%;
+    margin-right: 3%;
+    background-color: #ffffff5c;
+    border-radius: 5%;
+}
+
 .maincol-tab table{
     margin-bottom: -300px;
+}
+
+.maincol-mobile table{
+    margin-bottom: -500px;
+}
+
+.maincol table{
+    margin-bottom: 50px;
 }
 
 .sidecol{
@@ -174,4 +191,17 @@ body{
 
 .controw{
     height: 100%;
+}
+
+.tablecol{
+    overflow-x: scroll;
+    margin-top: 50px;
+}
+
+.mobile{
+    height: fit-content;
+}
+
+.searchmob{
+    margin-bottom: 50px;
 }
