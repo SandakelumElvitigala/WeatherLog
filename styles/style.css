@@ -1,5 +1,4 @@
 body{
-    overflow-x: hidden;
     background-size: cover;
     overflow-x: hidden;
 }
@@ -21,37 +20,34 @@ body{
     justify-content: right;
 }
 
-/* Remove default background and border */
 .btn-check {
-    display: none; /* Hide the checkbox itself */
+    display: none; 
 }
 
 #toggleStat {
-    background-color: transparent; /* Make the background transparent */
-    border: 1px solid transparent; /* Make the border transparent */
-    padding: 10px 20px; /* Add padding to size the button */
-    border-radius: 5px; /* Optional: rounded corners */
-    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+    background-color: transparent; 
+    border: 1px solid transparent; 
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s; 
 }
 
 #toggleStat i {
-    color: #333; /* Default icon color */
-    font-size: 20px; /* Adjust icon size */
+    color: #333; 
+    font-size: 20px; 
 }
 
-/* Change styles when the checkbox is checked */
 .btn-check:checked + #toggleStat {
-    border-color: rgba(255, 255, 255, 0.5); /* Light border when checked */
+    border-color: rgba(255, 255, 255, 0.5); 
 }
 
-/* Optional: Add hover effect */
 #toggleStat:hover {
-    background-color: rgba(0, 0, 0, 0.1); /* Light background on hover */
+    background-color: rgba(0, 0, 0, 0.1); 
 }
 
 #toggleStat i {
-    font-size: 40px; /* Change the size of the icon */
-    color: #333; /* Optional: change the color of the icon */
+    font-size: 40px; 
+    color: #333; 
 }
 
 .mainrow{
@@ -140,12 +136,11 @@ body{
 
 .details {
     position: absolute;
-    bottom: 0px; /* Adjust this value to move the text up or down */
-    left: 0px;   /* Adjust this value to move the text left or right */
-    color: white; /* Text color */
-    background-color: rgba(0, 0, 0, 0.5); /* Background color with transparency */
-    
-    border-radius: 5px; /* Optional: to make the edges rounded */
+    bottom: 0px; 
+    left: 0px; 
+    color: white; 
+    background-color: rgba(0, 0, 0, 0.5);    
+    border-radius: 5px; 
     height: 100%;
     width: 100%;
 }

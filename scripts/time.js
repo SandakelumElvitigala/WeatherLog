@@ -118,14 +118,7 @@ function getStat() {
 // Add event listener to the checkbox to handle change event
 toggleCheckbox.addEventListener('change', updateLabel);
 
-// Automatically click the checkbox twice when the page loads
-window.onload = function() {
-    toggleCheckbox.click(); // First click
-    toggleCheckbox.click(); // Second click
-    updateLabel(); // Update label after clicks
-    displayInitialTime(); // Display time immediately after page load
-    displayLocalTime(); // Fetch and update location and time zone info
-};
+
 
 function changeBackground(stat) {
     console.log(stat);
